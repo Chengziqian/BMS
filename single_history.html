@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="global.css">
+        <style>
+            .guide div span{
+                    position: relative;top: 20px;font-size: 150%;color: black;
+                }
+                .guide .user{
+                    display: inline-block;
+                    width: 45%;
+                    height: 70px;
+                    box-shadow: 5px 5px 5px gray;
+                    text-align: center;
+                    margin-top: 8px;
+                    opacity: 0.7;
+                }
+                .btn btn-info{
+                     margin-top: 10px;
+                }
+                .pro{
+                    position: absolute;
+                    left:10px;
+                    top:150px;
+                    width: 90%;
+                    height: 30px;
+                    margin: 0 auto;
+                    background-color: palegreen;
+                }
+                table{
+                    text-align: center;
+                    width: 70%;
+                    background-color: white;
+                    position: absolute;
+                    right: 150px;
+                    top: 30px;
+                }
+                td{
+                    font-size: 150%;
+                    color: black;
+                    border: 4px solid black;
+            }
+                tr{
+                    border: 4px solid black;
+            }
+            .guide div span{
+                    position: relative;top: 20px;font-size: 150%;color: black;
+                }
+                .guide .user{
+                    display: inline-block;
+                    width: 45%;
+                    height: 70px;
+                    box-shadow: 5px 5px 5px gray;
+                    text-align: center;
+                    margin-top: 8px;
+                    opacity: 0.7;
+                }
+                .btn btn-info{
+                     margin-top: 10px;
+                }
+        </style>
+    </head>
+    <body>
+        <div id="body1" style="background-image:url(./pictures/bg3.jpg);">
+        <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
+                <div style="width: 100%;height: 50px;background-color: darkred;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">管理员</span></div>
+                <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
+                    <div class="user" style="width: 90%;background-color: lightcoral;"><span>欢迎，管理员<a href="#">USERR</a>！</span></div>
+                    <div style="position: relative;top: 30px;left: 10px;"><span>还书申请：0 本</span></div>
+                </div>
+            </div>
+                <table border="4px solid black">
+                    <tr>
+                        <td>序号</td>
+                        <td>书籍名称</td>
+                        <td>书籍编号</td>
+                        <td>书籍作者</td>
+                        <td>借书者</td>
+                        <td>借书时间</td>
+                        <td>还书时间</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>一本书读懂大数据</td>
+                        <td>G-3-1</td>
+                        <td>黄颖</td>
+                        <td>USERR</td>
+                        <td>2017-1-22</td>
+                        <td>---------</td>
+                        <td>未归还</td>
+                        <td><button class="btn btn-danger">删除该条记录</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>一本书读懂大数据</td>
+                        <td>G-3-1</td>
+                        <td>黄颖</td>
+                        <td>USERR</td>
+                        <td>2017-1-22</td>
+                        <td>---------</td>
+                        <td>未归还</td>
+                        <td><button class="btn btn-danger">删除该条记录</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>一本书读懂大数据</td>
+                        <td>G-3-1</td>
+                        <td>黄颖</td>
+                        <td>USERR</td>
+                        <td>2017-1-22</td>
+                        <td>---------</td>
+                        <td>未归还</td>
+                        <td><button class="btn btn-danger">删除该条记录</button></td>
+                    </tr>
+                </table>
+        </div>
+    </body>
+</html>

@@ -39,31 +39,39 @@
     <body>
         <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
         <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
-                <div style="width: 100%;height: 50px;background-color: lightgreen;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">我的书库</span></div>
+                <div style="width: 100%;height: 50px;background-color: darkorange;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">我的资料</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
-                    <div class="user" style="width: 90%;background-color: lightgoldenrodyellow;"><span>欢迎，<a href="#">USERR</a>！</span></div>
+                    <div class="user" style="width: 90%;background-color: lightsalmon;"><span>欢迎，<a href="#">USERR</a>！</span></div>
                     <div class="pro"></div>
                     <div style="position: relative;top: 30px;left: 10px;"><span>·已借书目/借书上限：45/45（100%）</span></div>
                     <div style="position: relative;top: 30px;left: 10px;"><span>·等待还书：0 本</span></div>
                 </div>
             </div>
-            <table style="width: 70%;margin: 0 auto;height: 70%;background-color: white;float: right;position: absolute;right: 50px;top: 30px;" border="4px solid black">
+            <table style="width: 40%;margin: 0 auto;height: 50%;background-color: white;float: right;position: absolute;right: 350px;top: 30px;" border="4px solid black">
                 <tr style="height: 10%;"> 
-                    <td>书籍名称</td>
-                    <td>一本书读懂大数据</td>
+                    <td>用户名</td>
+                    <td><input type="text" value="USERR" style="width: 100%;height: 100%;text-align: center;"disabled="disabled"></td>
                 </tr>
                 <tr style="height: 10%">
-                    <td>书籍作者</td>
-                    <td>黄颖</td>
+                    <td>邮箱</td>
+                    <td><input type="text" value="USER@email.com" style="width: 100%;height: 100%;text-align: center;"disabled="disabled"></td>
                 </tr>
-                <tr style="height: 50%">
-                    <td>书籍简介</td>
-                    <td><textarea style="width: 100%;height: 100%;resize: none;" readonly>一本书读懂大数据</textarea></td>
+                <tr style="height: 10%">
+                    <td>用户组</td>
+                    <td><input type="text" value="管理员" style="width: 100%;height: 100%;text-align: center;"disabled="disabled"></td>
+                </tr>
+                <tr style="height: 10%">
+                    <td>真实姓名</td>
+                    <td><input type="text" value="未编辑" style="width: 100%;height: 100%;text-align: center;"disabled="disabled"></td>
+                </tr>
+                <tr style="height: 10%">
+                    <td>所在学校</td>
+                    <td><input type="text" value="未编辑" style="width: 100%;height: 100%;text-align: center;"disabled="disabled"></td>
                 </tr>
             </table>
-            <div style="position: absolute;top: 550px;right: 500px;">
-                <div style="margin-top: 30px;display: inline-block;"><button class="btn btn-success" style="width: 100px;">确认借书</button></div>
-                <div style="margin-top: 30px;display: inline-block;"><button class="btn btn-danger" style="width: 100px;">返回书库</button></div>
+            <div style="position: absolute;top: 450px;right: 550px;">
+                <div style="margin-top: 30px;display: inline-block;"><button class="btn btn-info" style="width: 100px;">修改</button></div>
+                <div style="margin-top: 30px;display: inline-block;"><button class="btn btn-danger" style="width: 100px;">返回</button></div>
             </div>
         </div>
     </body>

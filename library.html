@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="global.css">
-        <link rel="stylesheet" href="cikonss.css" />
         <style>
                 ul{
                     float: right;
@@ -33,6 +32,7 @@
                     height: 250px;
                 }
                 figcaption{
+                    z-index: 2000;
                     height: 100%;
                     width: 100%;
                     position: absolute;
@@ -68,7 +68,7 @@
                     transition: width 1.0s;
                 }
                 figure:hover figcaption div{
-                    width: 80%;
+                    width: 40%;
                 }
                 .guide div{
                     display: inline-block;
@@ -93,9 +93,10 @@
     </head>
     <body>
         <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
-            <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
+            <div style="text-align: left; display: inline-block;width: 250px;height: 400px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: grey;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">导航栏</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
+                    <div style="width: 90%;background-color: darkgray;"><span>欢迎，<a href="#">USERR</a>！</span></div>
                     <a href="#"><div style=" background-color: salmon;"><span>文学</span></div></a>
                     <a href="#"><div style=" background-color: cornflowerblue;"><span>科技</span></div></a>
                     <a href="#"><div style=" background-color: green;"><span>军事</span></div></a>
@@ -107,6 +108,9 @@
                 <ul>
                     <li class="book1">
                         <figure>
+                            <div style="z-index: 1000;position: absolute; width:120px;height: 30px;background-color: rgba(255,0,0,0.6);margin: 0;top: 10px;left: 20px;">
+                                <span style="margin-top: 5px;display: inline-block;">库存已空</span>
+                            </div>
                             <div>
                                 <img src="./cover/Big Data.jpg">
                             </div>
@@ -120,7 +124,7 @@
                             </figcaption>
                         </figure>
                     </li>
-                    <li class="book1">
+                    <li class="book2">
                         <figure>
                             <div>
                                 <img src="./cover/Big Data.jpg">

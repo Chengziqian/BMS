@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="global.css">
-        <link rel="stylesheet" href="cikonss.css" />
     </head>
     <style>
         span{
@@ -27,11 +26,27 @@
                     <input type="text" id="book_name" placeholder="请输入书名" name="book_name" style="font-size:150%;font-family:Microsoft YaHei;width:400px;height:42px;">
                 </div>
                 <div style="margin: 50px;position: relative;top: 50px;">
+                    <span style="font-size:150%;font-family:Microsoft YaHei;">书籍类型</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select style="width:400px;">
+                        <option>----请选择----</option>
+                        <option>文学</option>
+                        <option>科技</option>
+                        <option>军事</option>
+                        <option>历史、地理</option>
+                        <option>医药、卫生</option>
+                        <option>综合性图书</option>
+                    </select>
+                </div>
+                <div style="margin: 50px;position: relative;top: 50px;">
+                    <span style="font-size:150%;font-family:Microsoft YaHei;">书籍编号</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="book_name" placeholder="请输入书名" name="book_name" style="font-size:150%;font-family:Microsoft YaHei;width:400px;height:42px;">
+                </div>
+                <div style="margin: 50px;position: relative;top: 50px;">
                     <span style="font-size:150%;font-family:Microsoft YaHei;">书籍出版社</span>&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" id="book_name" placeholder="请输入书名" name="book_name" style="font-size:150%;font-family:Microsoft YaHei;width:400px;height:42px;">
                 </div>
                 <div style="margin: 50px;position: relative;top: 50px;height: 100px;">
-                    <span style="font-size:150%;font-family:Microsoft YaHei;position: relative;top: -60px;">书籍名简介</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size:150%;font-family:Microsoft YaHei;position: relative;top: -60px;">书籍简介</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <textarea style="resize: none;width:400px;height:100px;;font-size:150%;display: inline-block;"placeholder="请输入书籍简介"></textarea>
                 </div>
                 <div style="margin: 50px;position: relative;top: 50px;margin-bottom: 0px;">
@@ -39,7 +54,8 @@
                     <input class="" type="file" id="book_name"  name="book_name" style="font-size:100%;font-family:Microsoft YaHei;width:200px;height:42px;display: inline-block;color: red;">
                     <div style="display: inline-block;border: 5px solid wheat;width: 210px;height: 260px;"><img src="./cover/no_picture.jpg" ></div>
                 </div>
-                <div style="margin-top: 100px;"><button class="btn btn-success" style="width: 500px;">添&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍</button></div>
+                <div style="margin-top: 100px;display: inline-block;"><button class="btn btn-success" style="width: 100px;">添加书籍</button></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style="margin-top: 100px;display: inline-block;"><button class="btn btn-danger" style="width: 100px;">返回</button></div>
             </form>
         </div>
     </body>
