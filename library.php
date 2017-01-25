@@ -1,3 +1,35 @@
+<?php
+    date_default_timezone_set('PRC');
+    session_start();
+    $conn_hostname='localhost';
+    $conn_database='BMS';
+    $conn_username='root';
+    $conn_psaaword='root';
+    try{
+        $pdo=new PDO('mysql:host='.$conn_hostname.';dbname='.$conn_database,$conn_username,$conn_psaaword);
+        $pdo->exec('SET NAMES UTF8');
+    }
+    catch (Exception $e){
+    echo '<h1>数据库链接错误！</h1>';
+    return;
+    }
+    if($_SESSION['user_name']==''&&$_SESSION['user_email']=='')
+        header("Location:signin.php");
+    else{
+        $user_name=$_SESSION['user_name'];
+        $user_email=$_SESSION['user_email'];
+        $user_type=$_SESSION['user_type'];
+        $id=$_SESSION['user_id'];
+    }
+    $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name;');
+    $sql->bindValue(':user_name',$user_name);
+    $sql->execute();
+    $info=$sql->fetch(PDO::FETCH_ASSOC);
+    if($info === false) {
+            echo '<h1>404</h1>';
+            return;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -96,7 +128,7 @@
             <div style="text-align: left; display: inline-block;width: 250px;height: 400px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: grey;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">导航栏</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
-                    <div style="width: 90%;background-color: darkgray;"><span>欢迎，<a href="#">USERR</a>！</span></div>
+                    <div style="width: 90%;background-color: darkgray;"><span>欢迎，<a href="user_index.php?id=<?php echo $id ?>"><?php echo $user_name ?></a>！</span></div>
                     <a href="#"><div style=" background-color: salmon;"><span>文学</span></div></a>
                     <a href="#"><div style=" background-color: cornflowerblue;"><span>科技</span></div></a>
                     <a href="#"><div style=" background-color: green;"><span>军事</span></div></a>

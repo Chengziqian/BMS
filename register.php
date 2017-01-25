@@ -21,11 +21,12 @@
             $res=$pdo->query($sql);
             $rowCount=$res->rowCount();
             if ($rowCount==0){
-                $sql=$pdo->prepare('INSERT INTO BMS_users(`user_name`,`user_password`,`user_email`,`user_type`,`user_allow_books`,`user_reg_time`) VALUES(:user_name,:user_password,:user_email,:user_type,:user_allow_books,:user_reg_time);');
+                $sql=$pdo->prepare('INSERT INTO BMS_users(`user_name`,`user_password`,`user_email`,`user_type`,`user_lent_books`,`user_allow_books`,`user_reg_time`) VALUES(:user_name,:user_password,:user_email,:user_type,:user_lent_books,:user_allow_books,:user_reg_time);');
                 $sql->bindValue(':user_name',$_POST['user_name']);
                 $sql->bindValue(':user_password',$_POST['user_password']);
                 $sql->bindValue(':user_email',$_POST['user_email']);
                 $sql->bindValue(':user_type',0);
+                $sql->bindValue(':user_lent_books',0);
                 $sql->bindValue(':user_allow_books',30);
                 $sql->bindValue(':user_reg_time',date('Y-m-d H:i:s',time()));
                 $execute_res=$sql->execute();
@@ -116,7 +117,7 @@
             <div style="width:100%;height:100px;background-color:rgba(255,255,255,0.7);overflow:hidden;white-space:nowrap;">
                 <div style="text-align:center;width:100%;height:100px;">
                     <div style="vertical-align:top;display:inline-block;margin-left:10px;margin-right:200px;width:510px;height:100px;"><span style="font-size:400%;font-family:Microsoft YaHei;">图书管理系统&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;用户注册</sapn></div>
-                    <div style="vertical-align:top;display:inline-block;width:510px;height:56px;margin-top:20px;"><span style="font-size:200%;font-family:Microsoft YaHei;">我已注册，现在就</sapn>&nbsp;&nbsp;&nbsp;<span><a href="signin.html" ><button class="btn btn-warning" style="width:80px;height:50px;font-size:80%;font-family:Microsoft YaHei;" >登录</button></a></span></div>
+                    <div style="vertical-align:top;display:inline-block;width:510px;height:56px;margin-top:20px;"><span style="font-size:200%;font-family:Microsoft YaHei;">我已注册，现在就</sapn>&nbsp;&nbsp;&nbsp;<span><a href="signin.php" ><button class="btn btn-warning" style="width:80px;height:50px;font-size:80%;font-family:Microsoft YaHei;" >登录</button></a></span></div>
                     <div style="vertical-align:top;display:inline-block;margin-right:10px;width:100px;height:56px;margin-top:20px;"><span><a href="index.html"><button class="btn btn-danger" style="width:100px;height:50px;font-size:130%;font-family:Microsoft YaHei;">返回首页</button></a></span></div> 
                 </div>
             </div>

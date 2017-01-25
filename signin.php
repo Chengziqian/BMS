@@ -21,7 +21,7 @@
             $sql->bindValue(':user_name',$user_name);
             $sql->execute();
             $info=$sql->fetch(PDO::FETCH_ASSOC);
-            if($info === false) {
+            if($info === false&&$user_name!="") {
                 $flag=3;
             }
             else {
@@ -83,7 +83,7 @@
         <div style="width:100%;height:100px;background-color:rgba(255,255,255,0.7);overflow:hidden;white-space:nowrap;">
                 <div style="text-align:center;width:100%;height:100px;">
                     <div style="vertical-align:top;display:inline-block;margin-left:10px;margin-right:200px;width:510px;height:100px;"><span style="font-size:400%;font-family:Microsoft YaHei;">图书管理系统&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;用户登录<sapn></div>
-                    <div style="vertical-align:top;display:inline-block;width:510px;height:56px;margin-top:20px;"><span style="font-size:200%;font-family:Microsoft YaHei;">我还没有账号，现在就</sapn>&nbsp;&nbsp;&nbsp;<span><a href="register.html" ><button class="btn btn-success" style="width:80px;height:50px;font-size:80%;font-family:Microsoft YaHei;" >注册</button></a></span></div>
+                    <div style="vertical-align:top;display:inline-block;width:510px;height:56px;margin-top:20px;"><span style="font-size:200%;font-family:Microsoft YaHei;">我还没有账号，现在就</sapn>&nbsp;&nbsp;&nbsp;<span><a href="register.php" ><button class="btn btn-success" style="width:80px;height:50px;font-size:80%;font-family:Microsoft YaHei;" >注册</button></a></span></div>
                     <div style="vertical-align:top;display:inline-block;margin-right:10px;width:100px;height:56px;margin-top:20px;"><span><a href="index.html"><button class="btn btn-danger" style="width:100px;height:50px;font-size:130%;font-family:Microsoft YaHei;">返回首页</button></a></span></div> 
                 </div>
             </div>

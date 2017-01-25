@@ -30,3 +30,8 @@
     2. 增加注册(register.php)、登录(signin.php)的表单填写JavaScript的检测，以及注册登录提示。
     3. 增加识别用户身份功能(user_index.php),(./icons/fun2_disabled.png)。
     4. 完善数据表结构(database.sql)，增加识别用户名大小写功能。
+* pre-version 2.2 :
+    1. 完成用户信息(user_info.php)编码，增加更改密码以及其他用户信息功能。
+    2. 修复JavaScript登录提示Bug(signin.php)。
+    3. 增加管理员添加书籍下拉列表的关联(add_book.php),以及书籍编号的提示。
+    4. 优化数据表结构(database.sql)。
