@@ -28,7 +28,7 @@ CREATE TABLE BMS_user_books(
 );
 CREATE TABLE BMS_books_index(
     `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `book_code` TEXT,
+    `book_code_index` TEXT,
     `book_name` TEXT BINARY,
     `book_num` INT,
     `book_lent` INT,
