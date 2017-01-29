@@ -35,8 +35,13 @@
     2. 修复JavaScript登录提示Bug(signin.php)。
     3. 增加管理员添加书籍下拉列表的关联(add_book.php),以及书籍编号的提示。
     4. 优化数据表结构(database.sql)。
-* PRE-version 2.3:
+* pre-version 2.3:
     1. 增加对添加书籍页面的JavaScript的非空检测和正则检测(add_book.php)。
     2. 完成除上传封面功能外的表单提交PHP编码(add_book.php)。
     3. 修改数据表字段名(BMS_books_index/book_code=>BMS_books_index/book_code_index)(database.sql)。
     4. 修改下拉菜单各项的值以适应数据检索(0-11=>00-11)。
+* pre-version 2.4
+    1. 增加添加书籍上传封面功能，以及文件格式的检测(add_book.php)。
+    2. 完成图书馆页面(library.php),图书信息页面(detail_book.php)的编码。
+    3. 添加对用户注册，登录空字符串的后台检测。
+    4. 修改导航页面信息。

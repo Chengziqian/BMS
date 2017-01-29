@@ -53,7 +53,7 @@
                     $sql->bindValue(':book_num',1);
                     $sql->bindValue(':book_lent',0);
                     $sql->bindValue(':book_author',$_POST['book_author']);
-                    $sql->bindValue(':book_type',substr($_POST['book_code'],0,3));
+                    $sql->bindValue(':book_type',substr($_POST['book_code'],0,4));
                     $sql->bindValue(':book_pub',$_POST['book_pub']);
                     $sql->bindValue(':book_desc',$_POST['book_desc']);
                     $res_index=$sql->execute();
@@ -79,6 +79,33 @@
                 if($res_book==true&&$res_index==false) $flag=-2;
                 if($res_book==false&&$res_index==false) $flag=-3;
             }
+            if($_FILES['book_cover']["error"]>0&&$_FILES['book_cover']["error"]!=4){
+                $flag=-5;
+            }
+            else if ($_FILES['book_cover']["error"]==4) {
+                
+            }
+            else{
+                if($_FILES['book_cover']['type']=="image/jpg"||$_FILES['book_cover']['type']=="image/png"||$_FILES['book_cover']['type']=="image/jpeg"){
+                    if($_FILES['book_cover']["error"]>0){
+                        $flag=-5;
+                }
+                else{
+                    $cover_name=substr($_POST['book_code'],0,8);
+                    if(file_exists("upload/".$cover_name)){
+                        $flag=-6;
+                    }
+                    else{
+                        move_uploaded_file($_FILES['book_cover']['tmp_name'],"upload/".$cover_name);
+                        $sql=$pdo->prepare('UPDATE BMS_books_index SET `book_cover`=:book_cover WHERE `book_code_index`=:book_code;');
+                        $sql->bindValue(':book_cover',substr($_FILES['book_cover']['type'],6));
+                        $sql->bindValue(':book_code',substr($_POST['book_code'],0,8));
+                        $sql->execute();
+                    }
+                }
+            }
+            else $flag=-7;
+    }
     }
     }
 ?>
@@ -111,11 +138,28 @@
         }
         var flag=0;
         flag=<?php echo $flag?>;
-        if(flag==1) {alert('添加成功!'); flag=0;}
-        if(flag==-1) {alert('添加书目失败'); flag=0;}
-        if(flag==-2) {alert('添加索引失败'); flag=0;}
-        if(flag==-3) {alert('无法添加书目和索引'); flag=0;}
-        if(flag==-4) {alert('输入的编号已经存在，若要查看已有编号，请点击输入栏后的按钮');flag=0;}
+        if(flag==1) {
+            alert('添加成功!'); 
+            flag=0;
+            window.location.href="management.php?id=<?php echo $id ?>";
+            }
+        if(flag==-1) {alert('添加书目失败。'); flag=0;}
+        if(flag==-2) {alert('添加索引失败。'); flag=0;}
+        if(flag==-3) {alert('无法添加书目和索引。'); flag=0;}
+        if(flag==-4) {
+            alert('输入的编号已经存在，若要查看已有编号，请点击输入栏后的按钮。');
+            flag=0;
+            //documnet.getElementById("info_check").style.display="";
+            }
+        if(flag==-5){
+            alert("上传文件失败。");
+        }
+        if(flag==-6){
+            alert("该书索引封面已存在,但是已经输入的信息已导入，封面不会改变，如果确实要修改，请在管理历史记录里修改。");
+        }
+        if(flag==-7){
+            alert("请选择 .jpg .jepg .png格式的封面图片。");
+        }
         var tip;
         function sel(x){
             tip=x;
@@ -521,16 +565,33 @@
                 return false;
             }
             else if(!rule.test(code_judge)){
-                alert("您输入的书籍编号不合法！\n请按照\n书籍大类-书籍小类-书籍编号(必须三位数字)-书籍序号(没有位数限制) 的方式 例如 \n G-1-001-1 表示 \n 科学-自然科学-编号001-序号1 的书籍");
+                alert("您输入的书籍编号不合法！\n请按照\n书籍大类-书籍小类-书籍编号(必须三位数字)-书籍序号(没有位数限制) 的方式 例如 \n G-1-001-1 表示 \n 科学-自然科学-编号001-序号1 的书籍。");
                 return false;
             }
             else return true;
         }
+        function preview(obj){
+            var cover=document.getElementById('book_cover_preview');
+            if(obj.files&&obj.files[0]){
+                var format=/^.+\.(jpg|png|jpeg|JPG|PNG|JPEG)$/;
+                var file_name=obj.value;
+                if(format.test(file_name))
+                {
+                    cover.style.width='200px';
+                    cover.style.height='250px';
+                    cover.src=window.URL.createObjectURL(obj.files[0]);
+                }
+                else {
+                    obj.outerHTML=obj.outerHTML;
+                    alert("请选择 .jpg .jepg .png格式的封面图片。");
+                }
+            }
+        }
     </script>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg3.jpg);height:1200px;">
-        <form action="add_book.php?id=<?php echo $id?>" method="post" onsubmit="return judge()">
+        <div id="body1" style="background-image:url(./pictures/bg3.jpg);height:1200px;">   
+        <form id="form_info" caction="add_book.php?id=<?php echo $id?>" method="post" onsubmit="return judge()" enctype="multipart/form-data">
             <textarea style="display:none" id="hide"><?php if($flag==-4) {foreach($code as $value){ echo $value['book_code']."\n";}} ?></textarea>
                 <div style="position: relative;top: 50px;">
                     <span style="font-size:150%;font-family:Microsoft YaHei;">书籍名称</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -560,7 +621,7 @@
                     <span style="font-size:150%;font-family:Microsoft YaHei;">书籍编号</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" id="book_code" placeholder="请输入书籍编号" name="book_code" style="font-size:150%;font-family:Microsoft YaHei;width:400px;height:42px;"onblur="tip('book_code','tip_2')">
                     <div id="tip_2" style="position:relative;left:-50px;display:none"><span  class="tip">内容不能为空</span></div>
-                    <div><button style="position:relative;left:-50px;display:<?php echo $flag==-4?'':'none'?> ;" class="btn btn-info" onclick="info()" type="button">查看书籍编号</button></div>          
+                    <div id="info_check" style="display:<?php echo $flag==-4?'':'none'?>;"><button  style="position:relative;left:50px;top:10px;" class="btn btn-info" onclick="info()" type="button">查看书籍编号</button></div>          
                 </div>
                 <div style="margin: 50px;position: relative;top: 50px;">
                     <span style="font-size:150%;font-family:Microsoft YaHei;">书籍出版社</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -572,8 +633,8 @@
                 </div>
                 <div style="margin: 50px;position: relative;top: 50px;margin-bottom: 0px;">
                     <span style="font-size:150%;font-family:Microsoft YaHei;">书籍封面</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="" type="file" id="book_cover"  name="FILE" style="font-size:100%;font-family:Microsoft YaHei;width:200px;height:42px;display: inline-block;color: red;">
-                    <div style="display: inline-block;border: 5px solid wheat;width: 210px;height: 260px;"><img src="./cover/no_picture.jpg" ></div>
+                    <input class="" type="file" id="book_cover"  name="book_cover" style="z-index:10;font-size:100%;font-family:Microsoft YaHei;width:200px;height:42px;display: inline-block;color: red;" onchange="preview(this)">
+                    <div style="display: inline-block;border: 5px solid wheat;width: 210px;height: 260px;"><img id="book_cover_preview" src="./cover/no_picture.jpg" ></div>
                 </div>
                 <div style="margin-top: 100px;display: inline-block;"><button type="submit" name="action" value="add" class="btn btn-success" style="width: 100px;">添加书籍</button></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div style="margin-top: 100px;display: inline-block;"><a href="management.php?id=<?php echo $id?>"><button class="btn btn-danger" type="button" style="width: 100px;">返回</button></a></div>

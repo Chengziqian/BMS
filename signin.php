@@ -15,26 +15,30 @@
     }
     if(isset($_POST['action'])){
         if($_POST['action']==='signin'){
-            $user_name=$_POST['user_name'];
-            $user_password=$_POST['user_password'];
-            $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name');
-            $sql->bindValue(':user_name',$user_name);
-            $sql->execute();
-            $info=$sql->fetch(PDO::FETCH_ASSOC);
-            if($info === false&&$user_name!="") {
-                $flag=3;
-            }
-            else {
-                $real_user_password=$info['user_password'];
-                if($real_user_password===$user_password) {
-                    $flag=1;
-                    $_SESSION['user_name']=$user_name;
-                    $_SESSION['user_email']=$info['user_email'];
-                    $_SESSION['user_type']=$info['user_type'];
-                    $_SESSION['user_id']=$info['id'];
+            if($_POST['user_name']!=""&&$_POST['user_password']!="")
+            {
+                $user_name=$_POST['user_name'];
+                $user_password=$_POST['user_password'];
+                $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name');
+                $sql->bindValue(':user_name',$user_name);
+                $sql->execute();
+                $info=$sql->fetch(PDO::FETCH_ASSOC);
+                if($info === false&&$user_name!="") {
+                    $flag=3;
                 }
-                else $flag=2;
+                else {
+                    $real_user_password=$info['user_password'];
+                    if($real_user_password===$user_password) {
+                        $flag=1;
+                        $_SESSION['user_name']=$user_name;
+                        $_SESSION['user_email']=$info['user_email'];
+                        $_SESSION['user_type']=$info['user_type'];
+                        $_SESSION['user_id']=$info['id'];
+                    }
+                    else $flag=2;
+                }
             }
+            else $flag=-1;
         }
     }
 ?>
@@ -52,9 +56,15 @@
             }
             if (flag==2){
                 alert("密码或用户名错误！");
+                flag=0;
             }
             if (flag==3){
                 alert("该用户名不存在！");
+                flag=0;
+            }
+            if (flag==-1){
+                alert("用户名和密码不能为空！");
+                flag=0;
             }
             function tip(x,y){
                 if(document.getElementById(x).value==""){

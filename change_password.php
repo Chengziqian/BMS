@@ -137,7 +137,7 @@
                     <div class="user" style="width: 90%;background-color: lightsalmon;"><span>欢迎，<a href="user_index.php?id=<?php echo $id ?>"><?php echo $user_name ?></a>！</span></div>
                     <div class="pro"></div>
                     <div style="position: relative;top: 30px;left: 10px;"><span>·已借书目/借书上限：<?php echo $info['user_lent_books']?>/<?php echo $info['user_allow_books']?>（<?php echo round($info['user_lent_books']/$info['user_allow_books']*100,1)?>%）</span></div>
-                    <div style="position: relative;top: 30px;left: 10px;"><span>·等待还书：0 本</span></div>
+                    <div style="position: relative;top: 30px;left: 10px;"><span>·等待还书：<?php echo $info['user_waiting_books'] ?> 本</span></div>
                 </div>
             </div>
             <form action="change_password.php?id=<?php echo $id ?>" method="post" onsubmit="return check()">

@@ -15,45 +15,49 @@
     }
     if (isset($_POST['action'])){
         if($_POST['action']==='register'){
-            $user_name=$_POST['user_name'];
-            $user_email=$_POST['user_email'];
-            $sql="SELECT * FROM BMS_users WHERE `user_name`='".$_POST['user_name']."'";
-            $res=$pdo->query($sql);
-            $rowCount=$res->rowCount();
-            if ($rowCount==0){
-                $sql=$pdo->prepare('INSERT INTO BMS_users(`user_name`,`user_password`,`user_email`,`user_type`,`user_lent_books`,`user_allow_books`,`user_reg_time`) VALUES(:user_name,:user_password,:user_email,:user_type,:user_lent_books,:user_allow_books,:user_reg_time);');
-                $sql->bindValue(':user_name',$_POST['user_name']);
-                $sql->bindValue(':user_password',$_POST['user_password']);
-                $sql->bindValue(':user_email',$_POST['user_email']);
-                $sql->bindValue(':user_type',0);
-                $sql->bindValue(':user_lent_books',0);
-                $sql->bindValue(':user_allow_books',30);
-                $sql->bindValue(':user_reg_time',date('Y-m-d H:i:s',time()));
-                $execute_res=$sql->execute();
-                if ($execute_res==true){
-                    $judge=1;
-                    $_SESSION['user_name']=$user_name;
-                    $_SESSION['user_email']=$user_email;
-                    $_SESSION['user_type']=0;
-                    $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name');
-                    $sql->bindValue(':user_name',$user_name);
-                    $sql->execute();
-                    $info=$sql->fetch(PDO::FETCH_ASSOC);
-                    if($info === false) {
-                            echo '<h1>404</h1>';
-                            return;
+            if($_POST['user_name']!=""&&$_POST['user_email']!=""&&$_POST['user_password']!=""&&$_POST['user_password_repeat']!="")
+            {
+                $user_name=$_POST['user_name'];
+                $user_email=$_POST['user_email'];
+                $sql="SELECT * FROM BMS_users WHERE `user_name`='".$_POST['user_name']."'";
+                $res=$pdo->query($sql);
+                $rowCount=$res->rowCount();
+                if ($rowCount==0){
+                    $sql=$pdo->prepare('INSERT INTO BMS_users(`user_name`,`user_password`,`user_email`,`user_type`,`user_lent_books`,`user_allow_books`,`user_reg_time`) VALUES(:user_name,:user_password,:user_email,:user_type,:user_lent_books,:user_allow_books,:user_reg_time);');
+                    $sql->bindValue(':user_name',$_POST['user_name']);
+                    $sql->bindValue(':user_password',$_POST['user_password']);
+                    $sql->bindValue(':user_email',$_POST['user_email']);
+                    $sql->bindValue(':user_type',0);
+                    $sql->bindValue(':user_lent_books',0);
+                    $sql->bindValue(':user_allow_books',30);
+                    $sql->bindValue(':user_reg_time',date('Y-m-d H:i:s',time()));
+                    $execute_res=$sql->execute();
+                    if ($execute_res==true){
+                        $judge=1;
+                        $_SESSION['user_name']=$user_name;
+                        $_SESSION['user_email']=$user_email;
+                        $_SESSION['user_type']=0;
+                        $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name');
+                        $sql->bindValue(':user_name',$user_name);
+                        $sql->execute();
+                        $info=$sql->fetch(PDO::FETCH_ASSOC);
+                        if($info === false) {
+                                echo '<h1>404</h1>';
+                                return;
+                            }
+                            else {
+                                $_SESSION['user_id']=$info['id'];
+                            }
                         }
-                        else {
-                            $_SESSION['user_id']=$info['id'];
+                    else{
+                            $judge=3;
                         }
-                    }
+                }
                 else{
-                        $judge=3;
-                    }
+                    $judge=2;
+                }
             }
-            else{
-                $judge=2;
-            }
+            else $judge=-1;
         }
     }
 ?>
@@ -76,6 +80,10 @@
             }
             if(judge==3){
                 alert("抱歉，注册失败");
+                judge=0;
+            }
+            if(judge==-1){
+                alert("内容不能为空！");
                 judge=0;
             }
             var flag=0;

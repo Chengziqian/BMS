@@ -35,6 +35,7 @@ CREATE TABLE BMS_books_index(
     `book_author` TEXT,
     `book_type` TEXT,
     `book_pub` TEXT,
-    `book_desc` LONGTEXT
+    `book_desc` LONGTEXT,
+    `book_cover` TEXT
 );
-INSERT INTO BMS_users (`user_name`,`user_password`,`user_email`,`user_type`,`user_allow_books`,`user_reg_time`) VALUE('Admin','root','Admin@BMS.com','1','40',now());
+INSERT INTO BMS_users (`user_name`,`user_password`,`user_email`,`user_type`,`user_allow_books`,`user_reg_time`,`user_lent_books`,`user_waiting_books`) VALUE('Admin','root','Admin@BMS.com','1','40',now(),0,0);
