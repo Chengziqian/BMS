@@ -29,6 +29,9 @@
             echo '<h1>404</h1>';
             return;
     }
+    $sql='SELECT * FROM BMS_books WHERE `book_status`=2;';
+    $res=$pdo->query($sql);
+    $num=$res->rowCount();
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +49,7 @@
                 <a href="add_book.php?id=<?php echo $id?>"><img src="./icons/m1.png" onmouseover="this.src='./icons/m1_hover.png'"onmouseout="this.src='./icons/m1.png'"></a>
             </div>
             <div style="display: inline-block;width: 200px;margin: 30px;">
-                <div style="z-index: 1000px;position: absolute;"><span style="display: block;position: absolute;left: 7px;top: 5px; font-size: 100%;color: white;">30</span><img src="./icons/info.png"></div>
+                <div style="z-index: 1000px;position: absolute;"><span style="display: block;position: absolute;left: 7px;top: 5px; font-size: 100%;color: white;"><?php echo $num ?></span><img src="./icons/info.png"></div>
                 <a href="return_books.php?id=<?php echo $id?>"><img src="./icons/m2.png" onmouseover="this.src='./icons/m2_hover.png'"onmouseout="this.src='./icons/m2.png'">
             </div>
             <div style="display: inline-block;width: 200px;margin: 30px">

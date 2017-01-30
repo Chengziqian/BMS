@@ -27,13 +27,13 @@
             $flag=1;
         }
         if($_POST['action']==='user_history'){
-            header('Location:user_history.html?id='.$id);
+            header('Location:user_history.php?id='.$id);
         }
         if($_POST['action']==='user_info'){
             header('Location:user_info.php?id='.$id);
         }
         if($_POST['action']==='user_books'){
-            header('Location:user_books.html?id='.$id);
+            header('Location:user_books.php?id='.$id);
         }
     }
 ?>

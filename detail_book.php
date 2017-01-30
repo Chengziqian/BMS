@@ -60,10 +60,25 @@
                     $sql->bindValue(':id',$id);
                     $ju1=$sql->execute();
                     
-                    $sql=$pdo->prepare('UPDATE BMS_books SET `book_status`=0 WHERE `book_code`=:book_code ');
+                    $sql=$pdo->prepare('UPDATE BMS_books SET `book_status`=0,`user_id`=:user_id,`lent_time`=:lent_time WHERE `book_code`=:book_code ');
                     $sql->bindValue(':book_code',$_POST['select']);
+                    $sql->bindValue(':user_id',$id);
+                    $sql->bindValue(':lent_time',date('Y-m-d H:i:s',time()));
                     $ju2=$sql->execute();
-                    if($ju1==true&&$ju2==true&&$ju3==true) $flag=1;
+
+                    $sql=$pdo->prepare('INSERT INTO BMS_books_user_history (`book_code`,`lent_time`,`user_id`,`flag`) VALUES (:book_code,:lent_time,:user_id,1);');
+                    $sql->bindValue(':book_code',$_POST['select']);
+                    $sql->bindValue(':lent_time',date('Y-m-d H:i:s',time()));
+                    $sql->bindValue(':user_id',$id);
+                    $ju4=$sql->execute();
+
+                    $sql=$pdo->prepare('INSERT INTO BMS_books_history (`book_code`,`lent_time`,`user_id`,`flag`) VALUES (:book_code,:lent_time,:user_id,1);');
+                    $sql->bindValue(':book_code',$_POST['select']);
+                    $sql->bindValue(':lent_time',date('Y-m-d H:i:s',time()));
+                    $sql->bindValue(':user_id',$id);
+                    $ju5=$sql->execute();
+
+                    if($ju1==true&&$ju2==true&&$ju3==true&&$ju4==true&&$ju5==true) $flag=1;
                     else $flag=-1;
                 }
             }

@@ -17,14 +17,26 @@ CREATE TABLE BMS_users(
 CREATE TABLE BMS_books(
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `book_code` TEXT,
-    `book_status` INT
-);
-CREATE TABLE BMS_user_books(
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `mybook_code` TEXT,
+    `book_status` INT,
     `lent_time` DATETIME,
+    `user_id` INT
+);
+CREATE TABLE BMS_books_history(
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `book_code` TEXT,
+    `lent_time` DATETIME,
+    `apply_return_time` DATETIME,
     `return_time` DATETIME,
-    `bookstatus` INT
+    `user_id` INT,
+    `flag` INT
+);
+CREATE TABLE BMS_books_user_history(
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `book_code` TEXT,
+    `lent_time` DATETIME,
+    `apply_return_time` DATETIME,
+    `user_id` INT,
+    `flag` INT
 );
 CREATE TABLE BMS_books_index(
     `id` INT PRIMARY KEY AUTO_INCREMENT,

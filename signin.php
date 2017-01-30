@@ -34,6 +34,21 @@
                         $_SESSION['user_email']=$info['user_email'];
                         $_SESSION['user_type']=$info['user_type'];
                         $_SESSION['user_id']=$info['id'];
+                        $sql=$pdo->prepare('SELECT * FROM BMS_books WHERE `user_id`=:user_id;');
+                        $sql->bindValue(':user_id',$info['id']);
+                        $sql->execute();
+                        $res=$sql->fetchall(PDO::FETCH_ASSOC);
+                        $num=0;
+                        $now_time=date('Y-m-d H:i:s',time());
+                        foreach($res as $book){
+                            $day=(strtotime($now_time)-strtotime($book['lent_time']))/86400-0.5<=0?0:round((strtotime($now_time)-strtotime($book['lent_time']))/86400-0.5,0);
+                            if($day>45){
+                                $num++;
+                                $sql=$pdo->prepare('UPDATE BMS_books SET `book_status`=-1 WHERE `book_code`=:book_code');
+                                $sql->bindValue(':book_code',$book['book_code']);
+                                $sql->execute();
+                            }
+                        }
                     }
                     else $flag=2;
                 }
@@ -51,7 +66,7 @@
             var flag=0;
             flag=<?php echo $flag ?>;
             if (flag==1){
-                alert("登录成功！");
+                alert("登录成功！<?php echo $num==0?'':'您有'.$num.'本书逾期'?>");
                 window.location.href="user_index.php?id=<?php echo $info['id']; ?>";
             }
             if (flag==2){

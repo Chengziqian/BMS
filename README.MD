@@ -45,3 +45,8 @@
     2. 完成图书馆页面(library.php),图书信息页面(detail_book.php)的编码。
     3. 添加对用户注册，登录空字符串的后台检测。
     4. 修改导航页面信息。
+* pre-version 2.5
+    1. 完善数据表结构(database.sql)。
+    2. 增加历史记录功能，完成(detail_book.php),(user_history.php)编码。
+    3. 增加用户申请还书，管理员管理还书功能(user_books.php),(return_books.php)。
+    4. 增加用户登录检测逾期书籍，并提示本数的功能(signin.php)。
