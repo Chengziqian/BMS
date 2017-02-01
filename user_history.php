@@ -137,7 +137,7 @@
                         <td><?php echo $history['book_author'] ?></td>
                         <td><?php echo $history['lent_time'] ?></td>
                         <td><?php echo $history['apply_return_time']==NULL?'未申请':$history['apply_return_time'] ?></td>
-                        <td><?php if($history['book_status']==0) echo "正在被借用";if($history['book_status']==2) echo "等待管理员还书";if($history['book_status']==-1) echo "已逾期";if($history['flag']==0) echo "已归还";?></td>
+                        <td><?php if($history['book_status']==0&&$history['flag']!=0) echo "正在被借用";if($history['book_status']==2) echo "等待管理员还书";if($history['book_status']==-1) echo "已逾期";if($history['flag']==0) echo "已归还";?></td>
                         <td><button class="btn btn-info" name="action" value="SEL-<?php echo $history['book_code'] ?>">查看该书详情</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger" name="action" value="DEL-<?php echo $history['id'] ?>">删除该条记录</button></td>
                     </tr>
                     <?php }?>

@@ -197,7 +197,55 @@
                                 <div class="d<?php echo $book['id'] ?>"></div>
                                 <span style="margin-top: 30px;">已借天数：<?php echo $book['d']?>/45（<?php echo round($book['d']/45*100,1)?>%）</span>
                                 <span style="color: red;text-align: left;display:<?php echo $book['d']>45?'':'none'?>">逾期：<?php echo $book['d']-45 ?>天</span>
-                                <span>分类：科技</span>
+                                <span>分类：<?php 
+                                    switch ($book['book_type']){
+                                        case 'I-00' : echo '文学理论'; break;
+                                        case 'I-01' : echo '世界文学'; break;
+                                        case 'I-02' : echo '中国文学'; break;
+                                        case 'I-03' : echo '各国文学'; break;
+                                        case 'G-00' : echo '科学研究'; break;
+                                        case 'G-01' : echo '自然科学'; break;
+                                        case 'G-02' : echo '天文学、地理科学'; break;
+                                        case 'G-03' : echo '生物科学'; break;
+                                        case 'G-04' : echo '农业科学'; break;
+                                        case 'G-05' : echo '工业技术'; break;
+                                        case 'G-06' : echo '航空、航天'; break;
+                                        case 'G-07' : echo '环境科学、劳动保护科学(安全科学)'; break;
+                                        case 'E-00' : echo '军事理论'; break;
+                                        case 'E-01' : echo '世界军事'; break;
+                                        case 'E-02' : echo '中国军事'; break;
+                                        case 'E-03' : echo '各国军事'; break;
+                                        case 'E-04' : echo '战略、战役、战术'; break;
+                                        case 'E-05' : echo '军事地形学、军事地理学'; break;
+                                        case 'E-06' : echo '军事技术'; break;
+                                        case 'K-00' : echo '史学理论'; break;
+                                        case 'K-01' : echo '世界史'; break;
+                                        case 'K-02' : echo '中国史'; break;
+                                        case 'K-03' : echo '亚洲史'; break;
+                                        case 'K-04' : echo '非洲史'; break;
+                                        case 'K-05' : echo '欧洲史'; break;
+                                        case 'K-06' : echo '大洋洲史'; break;
+                                        case 'K-07' : echo '美洲史'; break;
+                                        case 'K-08' : echo '传记'; break;
+                                        case 'K-09' : echo '文学考古'; break;
+                                        case 'K-10' : echo '风俗习惯'; break;
+                                        case 'K-11' : echo '地理'; break;
+                                        case 'R-00' : echo '预防医学、卫生学'; break;
+                                        case 'R-01' : echo '中国医学'; break;
+                                        case 'R-02' : echo '基础医学'; break;
+                                        case 'R-03' : echo '临床医学'; break;
+                                        case 'R-04' : echo '内科学'; break;
+                                        case 'R-05' : echo '外科学'; break;
+                                        case 'R-06' : echo '特种医学'; break;
+                                        case 'R-07' : echo '药学'; break;
+                                        case 'Z-00' : echo '丛书'; break;
+                                        case 'Z-01' : echo '百科全书、类书'; break;
+                                        case 'Z-02' : echo '辞典'; break;
+                                        case 'Z-03' : echo '论文集、全集、选集、杂著'; break;
+                                        case 'Z-04' : echo '年签、年刊'; break;
+                                        case 'Z-05' : echo '期刊、连续性出版物'; break;
+                                        case 'Z-06' : echo '图书目录、文摘、索引'; break;
+                                    }?></span>
                                 <button class="btn btn-info" name="action" value="apply-<?php echo $book['book_code']?>" type="submit" <?php echo $book['book_status']==2?'disabled="disabled"':''?>>申请还书</button>
                             </figcaption>
                         </figure>

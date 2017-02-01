@@ -43,6 +43,22 @@
             $sql=$pdo->prepare('UPDATE BMS_books SET `book_status`=1,`user_id`=NULL,`lent_time`=NULL WHERE `book_code`=:book_code');
             $sql->bindValue(':book_code',substr($_POST['action'],7));
             $sql->execute();
+
+            $sql="SELECT * FROM `BMS_books` WHERE `book_code` LIKE '".substr($_POST['action'],7,8)."%' AND `book_status`!=1;";
+            $res_lent_num_sel=$pdo->query($sql);
+            $res_lent_num=$res_lent_num_sel->rowCount();
+            $sql=$pdo->prepare('UPDATE `BMS_books_index` SET `book_lent`=:book_lent WHERE `book_code_index`=:book_code_index;');
+            $sql->bindValue(':book_code_index',substr($_POST['action'],7,8));
+            $sql->bindValue(':book_lent',$res_lent_num);
+            $sql->execute();
+
+            $sql="SELECT * FROM `BMS_books` WHERE `user_id`='".$id."';";
+            $user_lent=$pdo->query($sql);
+            $user_lent_num=$user_lent->rowCount();
+            $sql=$pdo->prepare('UPDATE `BMS_users` SET `user_lent_books`=:lent WHERE `id`=:id;');
+            $sql->bindValue(':id',$id);
+            $sql->bindValue(':lent',$user_lent_num);
+            $sql->execute();
         }
     }
     $sql='SELECT * FROM BMS_books WHERE `book_status`=2;';

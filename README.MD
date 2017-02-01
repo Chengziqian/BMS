@@ -50,3 +50,7 @@
     2. 增加历史记录功能，完成(detail_book.php),(user_history.php)编码。
     3. 增加用户申请还书，管理员管理还书功能(user_books.php),(return_books.php)。
     4. 增加用户登录检测逾期书籍，并提示本数的功能(signin.php)。
+* per-version 2.6
+    1. 完成书籍历史记录基本功能的php编码(all_history.php)。
+    2. 完善管理员还书返回影响的功能(return_books.php)。
+    3. 修改一些小bug(management.php),(user_history.php)。

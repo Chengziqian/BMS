@@ -53,7 +53,7 @@
                 <a href="return_books.php?id=<?php echo $id?>"><img src="./icons/m2.png" onmouseover="this.src='./icons/m2_hover.png'"onmouseout="this.src='./icons/m2.png'">
             </div>
             <div style="display: inline-block;width: 200px;margin: 30px">
-                <a href="all_hisroty.php?id=<?php echo $id?>"><img src="./icons/m3.png" onmouseover="this.src='./icons/m3_hover.png'"onmouseout="this.src='./icons/m3.png'"></a>
+                <a href="all_history.php?id=<?php echo $id?>"><img src="./icons/m3.png" onmouseover="this.src='./icons/m3_hover.png'"onmouseout="this.src='./icons/m3.png'"></a>
             </div>
             </div>
         </div>
