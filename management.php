@@ -21,6 +21,8 @@
         $user_type=$_SESSION['user_type'];
         $id=$_SESSION['user_id'];
     }
+    if($user_type!=1)
+        header('Location:identity_error.php');
     $sql=$pdo->prepare('SELECT * FROM BMS_users WHERE `user_name`=BINARY :user_name;');
     $sql->bindValue(':user_name',$user_name);
     $sql->execute();

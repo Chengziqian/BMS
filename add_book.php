@@ -29,6 +29,8 @@
             echo '<h1>404</h1>';
             return;
     }
+    if($user_type!=1)
+    header('Location:identity_error.php');
     $flag=0;
     if(isset($_POST['action'])){
         if($_POST['action']==='add'){

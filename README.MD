@@ -54,3 +54,12 @@
     1. 完成书籍历史记录基本功能的php编码(all_history.php)。
     2. 完善管理员还书返回影响的功能(return_books.php)。
     3. 修改一些小bug(management.php),(user_history.php)。
+* pre-version 2.7
+    1. 完成书籍历史记录全部功能的php编码(all_history.php)。
+    2. 增加非管理员身份非法访问防护机制(identity_error.php)。
+    3. 增加修改书籍索引功能(edit_index.php)。
+    4. 完成单个书目历史记录的php编码(single_history.php)。
+    5. 美化UI提升用户体验(library.php),(all_history.php),(user_books.php)。
+
+#### 至此，BMS后端开发结束。
+---

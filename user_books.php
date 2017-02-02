@@ -185,7 +185,7 @@
                     <?php foreach($lent_info as $book) {?>
                     <li>
                         <figure>
-                            <div style="display:<?php echo $book['book_status']!=0?'':'none' ?>; z-index: 1000;position: absolute; width:120px;height: 30px;background-color: rgba(255,0,0,0.6);margin: 0;top: 10px;left: 20px;">
+                            <div style=" border-radius: 1.5em 0.5em 1.5em 0.5em; display:<?php echo $book['book_status']!=0?'':'none' ?>; z-index: 1000;position: absolute; width:120px;height: 30px;background-color: rgba(255,0,0,0.6);margin: 0;top: 10px;left: 20px;">
                                 <span style="margin-top: 5px;display: inline-block;"><?php if($book['book_status']==2) echo '等待管理员还书';if($book['book_status']==-1) echo '逾期'?> </span>
                             </div>
                             <div>
@@ -246,6 +246,7 @@
                                         case 'Z-05' : echo '期刊、连续性出版物'; break;
                                         case 'Z-06' : echo '图书目录、文摘、索引'; break;
                                     }?></span>
+                                    <span style="padding:0;">书籍编号:<?php echo $book['book_code'] ?></span>
                                 <button class="btn btn-info" name="action" value="apply-<?php echo $book['book_code']?>" type="submit" <?php echo $book['book_status']==2?'disabled="disabled"':''?>>申请还书</button>
                             </figcaption>
                         </figure>

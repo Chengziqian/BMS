@@ -29,6 +29,8 @@
             echo '<h1>404</h1>';
             return;
     }
+    if($user_type!=1)
+    header('Location:identity_error.php');
     if(isset($_POST['action'])){
         if(substr($_POST['action'],0,6)==='return'){
             $sql=$pdo->prepare('UPDATE BMS_books_history SET `return_time`=:return_time,`flag`=0 WHERE `book_code`=:book_code AND `flag`=1;');
@@ -117,7 +119,7 @@
                     border: 4px solid black;
             }
                 .guide div span{
-                    position: relative;top: 20px;font-size: 120%;color: black;
+                    position: relative;top: 20px;font-size: 150%;color: black;
                 }
                 .guide .user{
                     display: inline-block;

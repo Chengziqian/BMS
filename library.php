@@ -205,7 +205,7 @@
                     <?php foreach($books as $book) {?>
                     <li>
                         <figure>
-                            <div style="display:<?php echo $book['book_lent']>=$book['book_num']?'':'none' ?>; z-index: 1000;position: absolute; width:120px;height: 30px;background-color: rgba(255,0,0,0.6);margin: 0;top: 10px;left: 20px;">
+                            <div style=" border-radius: 1.5em 0.5em 1.5em 0.5em; display:<?php echo $book['book_lent']>=$book['book_num']?'':'none' ?>; z-index: 1000;position: absolute; width:120px;height: 30px;background-color: rgba(255,0,0,0.6);margin: 0;top: 10px;left: 20px;">
                                 <span style="margin-top: 5px;display: inline-block;">库存已空</span>
                             </div>
                             <div>

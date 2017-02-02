@@ -88,7 +88,7 @@
         </div><!--
         --><div style="display: inline-block;width: 700px;height: 100%;overflow: hidden;white-space: nowrap;vertical-align:top;margin: 0;padding: 0;">
             <div style="width: 292px;height: 336px;display: inline-block;position: relative;left: 70px;top:50px;z-index: 3"><a href="library.php?id=<?php echo $id ?>"><img src="./icons/fun1.png"width="292px" height="336px" onmouseover="this.src='./icons/fun1_l.png'"onmouseout="this.src='./icons/fun1.png'" ></a></div>
-            <div style="width: 292px;height: 336px;position: relative;top: 314px;left: -75px;display: inline-block;z-index: 2"><a href="#"><img src="./icons/fun3.png"width="292px" height="336px" onmouseover="this.src='./icons/fun3_l.png'"onmouseout="this.src='./icons/fun3.png'" ></a></div>
+            <div style="width: 292px;height: 336px;position: relative;top: 314px;left: -75px;display: inline-block;z-index: 2"><a href="user_books.php?id=<?php echo $id?>"><img src="./icons/fun3.png"width="292px" height="336px" onmouseover="this.src='./icons/fun3_l.png'"onmouseout="this.src='./icons/fun3.png'" ></a></div>
             <div style="width: 292px;height: 336px;position: relative;top:50px;left: -220px;display: inline-block;z-index: 3;"><?php if($user_type==1) echo '<a href="management.php?id=<?php echo $id?>">';?><img src="<?php if($user_type==1) echo'./icons/fun2.png'; else echo './icons/fun2_disabled.png';?>"width="292px" height="336px" onmouseover="<?php if($user_type==1) echo "this.src='./icons/fun2_l.png'"; else echo ""?>"  onmouseout="<?php if($user_type==1) echo "this.src='./icons/fun2.png'"; else echo ""?>" ><?php if($user_type==1) echo '</a>';?></div>
             </div>
             <form action="user_index.php?id=<?php echo $id ?>" method="post">
