@@ -592,7 +592,7 @@
     </script>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg3.jpg);height:1200px;">   
+        <div id="body1" style="background-image:url(./pictures/bg3.jpg);display: table;">   
         <form id="form_info" caction="add_book.php?id=<?php echo $id?>" method="post" onsubmit="return judge()" enctype="multipart/form-data">
             <textarea style="display:none" id="hide"><?php if($flag==-4) {foreach($code as $value){ echo $value['book_code']."\n";}} ?></textarea>
                 <div style="position: relative;top: 50px;">

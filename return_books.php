@@ -34,31 +34,32 @@
     if(isset($_POST['action'])){
         if(substr($_POST['action'],0,6)==='return'){
             $sql=$pdo->prepare('UPDATE BMS_books_history SET `return_time`=:return_time,`flag`=0 WHERE `book_code`=:book_code AND `flag`=1;');
-            $sql->bindValue(':book_code',substr($_POST['action'],7));
+            $sql->bindValue(':book_code',substr($_POST['action'],7,strrpos($_POST['action'],'-')-stripos($_POST['action'],'-')-1));
             $sql->bindValue(':return_time',date('Y-m-d H:i:s',time()));
             $sql->execute();
 
             $sql=$pdo->prepare('UPDATE BMS_books_user_history SET `flag`=0 WHERE `book_code`=:book_code AND `flag`=1;');
-            $sql->bindValue(':book_code',substr($_POST['action'],7));
+            $sql->bindValue(':book_code',substr($_POST['action'],7,strrpos($_POST['action'],'-')-stripos($_POST['action'],'-')-1));
             $sql->execute();
 
             $sql=$pdo->prepare('UPDATE BMS_books SET `book_status`=1,`user_id`=NULL,`lent_time`=NULL WHERE `book_code`=:book_code');
-            $sql->bindValue(':book_code',substr($_POST['action'],7));
+            $sql->bindValue(':book_code',substr($_POST['action'],7,strrpos($_POST['action'],'-')-stripos($_POST['action'],'-')-1));
             $sql->execute();
 
             $sql="SELECT * FROM `BMS_books` WHERE `book_code` LIKE '".substr($_POST['action'],7,8)."%' AND `book_status`!=1;";
             $res_lent_num_sel=$pdo->query($sql);
             $res_lent_num=$res_lent_num_sel->rowCount();
+
             $sql=$pdo->prepare('UPDATE `BMS_books_index` SET `book_lent`=:book_lent WHERE `book_code_index`=:book_code_index;');
             $sql->bindValue(':book_code_index',substr($_POST['action'],7,8));
             $sql->bindValue(':book_lent',$res_lent_num);
             $sql->execute();
 
-            $sql="SELECT * FROM `BMS_books` WHERE `user_id`='".$id."';";
+            $sql="SELECT * FROM `BMS_books` WHERE `user_id`='".substr($_POST['action'],strrpos($_POST['action'],'-')+1)."';";
             $user_lent=$pdo->query($sql);
             $user_lent_num=$user_lent->rowCount();
             $sql=$pdo->prepare('UPDATE `BMS_users` SET `user_lent_books`=:lent WHERE `id`=:id;');
-            $sql->bindValue(':id',$id);
+            $sql->bindValue(':id',substr($_POST['action'],strrpos($_POST['action'],'-')+1));
             $sql->bindValue(':lent',$user_lent_num);
             $sql->execute();
         }
@@ -136,7 +137,7 @@
         </style>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg1.jpg);display: table;">
             <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: darkred;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">管理员</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
@@ -165,7 +166,7 @@
                             <td><?php echo $book['lent_time']?></td>
                             <td><?php echo $book['apply_return_time']?></td>
                             <td><?php echo $book['book_status']==-1?'是(已逾期:'.($book['day']-45).'天)':'否'?></td>
-                            <td><button name="action" value="return-<?php echo $book['book_code'] ?>" type="submit" class="btn btn-info">还书</button></td>
+                            <td><button name="action" value="return-<?php echo $book['book_code'] ?>-<?php echo $book['user_id']?>" type="submit" class="btn btn-info">还书</button></td>
                         </tr>
                     <?php }?>
                 </table>

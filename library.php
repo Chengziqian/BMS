@@ -175,7 +175,7 @@
         </style>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg1.jpg);display: table;">
             <div style="text-align: left; display: inline-block;width: 250px;height: 450px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: grey;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">导航栏</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
