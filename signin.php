@@ -104,7 +104,7 @@
          }
         </style>
     </head>
-    <body style="background-image:url(./pictures/book2.jpg);">
+    <body style="background-image:url(./pictures/book2.jpg);min-width:1400px;">
         <div style="width:100%;height:100px;background-color:rgba(255,255,255,0.7);overflow:hidden;white-space:nowrap;">
                 <div style="text-align:center;width:100%;height:100px;">
                     <div style="vertical-align:top;display:inline-block;margin-left:10px;margin-right:200px;width:510px;height:100px;"><span style="font-size:400%;font-family:Microsoft YaHei;">图书管理系统&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;用户登录<sapn></div>

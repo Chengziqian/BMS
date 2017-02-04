@@ -130,7 +130,7 @@
         </script>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg1.jpg);overflow:hidden;">
         <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: darkorange;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">我的资料</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
@@ -141,7 +141,8 @@
                 </div>
             </div>
             <form action="change_password.php?id=<?php echo $id ?>" method="post" onsubmit="return check()">
-                <div style="position: absolute;right:700px;top: 100px;">
+            <div>
+                <div style="position: relative;left:40%;top: 100px;">
                     <div style="width:400px;margin-bottom:40px;">
                         <label for="user_oid_password" style="color:white;font-size:150%;font-family:Microsoft YaHei;margin-right: 31px;">输入原密码</label>
                         <input type="password" id="user_old_password" placeholder="输入原密码" name="user_old_password" style="font-size:150%;font-family:Microsoft YaHei;width:400px;height:42px;"onblur="tip('user_old_password','.user_old_password')">
@@ -158,9 +159,10 @@
                         <span class="user_password_repeat"></span>
                     </div>
                     </div>
-            <div style="position: absolute;top: 530px;right: 800px;">
+            <div style="position: relative;left: 46%;width:210px;top:100px;">
                 <div style="margin-top: 30px;display: inline-block;"><a href="user_index.php?id=<?php echo $id ?>"><button class="btn btn-warning" style="width: 100px;" type="submit" value="sure" name="action">确认修改</button></a></div>
                 <div style="margin-top: 30px;display: inline-block;"><a href="user_index.php?id=<?php echo $id ?>"><button class="btn btn-danger" style="width: 100px;" type="button">返回</button></a></div>
+            </div>
             </div>
             </form>
         </div>

@@ -151,7 +151,7 @@
         }
     </script>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg3.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg3.jpg);display:table;">
         <form action="edit_index.php?id=<?php echo $book_code_index?>" method="post" enctype="multipart/form-data">
             <table style="width: 50%;height: 95%;margin: 0 auto;">
                 <tr style="height: 60px;">

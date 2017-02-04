@@ -109,7 +109,7 @@
         </style>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg1.jpg);display: table;">
+        <div id="body1" style="background-image:url(./pictures/bg1.jpg);display: table;min-width:1400px;">
         <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: cornflowerblue;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">我的历史纪录</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
@@ -137,7 +137,7 @@
                         <td><?php echo $history['book_author'] ?></td>
                         <td><?php echo $history['lent_time'] ?></td>
                         <td><?php echo $history['apply_return_time']==NULL?'未申请':$history['apply_return_time'] ?></td>
-                        <td><?php if($history['book_status']==0&&$history['flag']!=0) echo "正在被借用";if($history['book_status']==2) echo "等待管理员还书";if($history['book_status']==-1) echo "已逾期";if($history['flag']==0) echo "已归还";?></td>
+                        <td><?php if($history['book_status']==0&&$history['flag']!=0) echo "正在被借用";if($history['book_status']==2&&$history['flag']==1) echo "等待管理员还书";if($history['book_status']==-1) echo "已逾期";if($history['flag']==0) echo "已归还";?></td>
                         <td><button class="btn btn-info" name="action" value="SEL-<?php echo $history['book_code'] ?>">查看该书详情</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger" name="action" value="DEL-<?php echo $history['id'] ?>">删除该条记录</button></td>
                     </tr>
                     <?php }?>

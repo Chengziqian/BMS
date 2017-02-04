@@ -151,7 +151,7 @@
         </script>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg3.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg3.jpg);min-width:1400px;">
         <form action="single_history.php?id=<?php echo $book_code ?>" method="post">
         <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: darkred;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">管理员</span></div>

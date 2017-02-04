@@ -53,7 +53,7 @@
         </script>
     </head>
     <body>
-        <div id="body1" style="white-space: nowrap;overflow: hidden;min-width: 1002px;min-height: 600px;background-image:url(./pictures/bg2.jpg);">
+        <div id="body1" style="white-space: nowrap;overflow: hidden;min-height: 700px;background-image:url(./pictures/bg2.jpg);min-width:1200px;">
             <div style="width:350px;height:100%;background-color: black;margin: 0;float: left;display: inline-block;overflow: hidden;white-space: nowrap;vertical-align:top;margin: 0;padding: 0;">
                 <div style="text-align:center;width: 100%;height: 150px;">
                     <div style="position: relative;top: 30px; margin:0 auto; width: 210px; height: 70px"><sapn style="font-size:200%;font-family:Microsoft YaHei;color: white"><?php echo $user_name;?></sapn></div>

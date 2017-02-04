@@ -120,7 +120,7 @@
          }
         </style>
     </head>
-    <body style="background-image:url(./pictures/book3.jpg);">
+    <body style="background-image:url(./pictures/book3.jpg);min-width:1400px;">
         <div id="body1">
             <div style="width:100%;height:100px;background-color:rgba(255,255,255,0.7);overflow:hidden;white-space:nowrap;">
                 <div style="text-align:center;width:100%;height:100px;">

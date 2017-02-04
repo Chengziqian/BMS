@@ -121,7 +121,7 @@
         </script>
     </head>
     <body>
-        <div id="body1" style="background-image:url(./pictures/bg1.jpg);">
+        <div id="body1" style="background-image:url(./pictures/bg1.jpg);min-width:1400px;">
         <div style="text-align: left; display: inline-block;width: 250px;height: 300px;background-color: whitesmoke;position: fixed;top: 30%;left: 0;box-shadow: 5px 5px 5px gray;z-index: 1000;">
                 <div style="width: 100%;height: 50px;background-color: darkorange;text-align: center;"><span style="position: relative;top: 10px;font-size: 150%;color: black">我的资料</span></div>
                 <div class="guide" style="width: 100%;height: 200px;margin-left: 10px;margin-top: 10px;">
@@ -132,7 +132,8 @@
                 </div>
             </div>
             <form action="user_info.php?id=<?php echo $id ?>" method="post" onsubmit="return check()">
-            <table style="width: 40%;margin: 0 auto;height: 50%;background-color: white;float: right;position: absolute;right: 350px;top: 30px;" border="4px solid black">
+            <div>
+            <table style="width: 600px;margin: 0 auto;height: 400px;background-color: white;position: relative;top: 30px;" border="4px solid black">
                 <tr style="height: 10%;"> 
                     <td>用户名</td>
                     <td><input id="user_name" name="user_name" type="text" value="<?php echo $info['user_name'];?>" style="width: 100%;height: 100%;text-align: center;" <?php echo $flag==1?'':'disabled="disabled"'?>></td>
@@ -154,10 +155,11 @@
                     <td><input name="user_school" type="text" value="<?php echo $info['user_school']==""?'未编辑':$info['user_school'];?>" style="width: 100%;height: 100%;text-align: center;" <?php echo $flag==1?'':'disabled="disabled"'?>></td>
                 </tr>
             </table>
-            <div style="position: absolute;top: 530px;right: 600px;">
+            <div style="position: relative;top: 40px;">
                 <div style="margin-top: 30px;display: inline-block;"><a href="change_password.php?id=<?php echo $id ?>"><button class="btn btn-warning" style="width: 100px;" type="button">修改密码</button></a></div>
                 <div style="margin-top: 30px;display: inline-block;"><button class="<?php echo $flag==1?'btn btn-success':'btn btn-info'?>" style="width: 100px;" type="submit" value="<?php echo $flag==1?'save':'modify'?>" name="action"><?php echo $flag==1?'保存':'修改'?></button></div>
                 <div style="margin-top: 30px;display: inline-block;"><a href="user_index.php?id=<?php echo $id ?>"><button class="btn btn-danger" style="width: 100px;" type="button">返回</button></a></div>
+            </div>
             </div>
             </form>
         </div>
